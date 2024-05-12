@@ -7,7 +7,7 @@ class Automata {
 
         this.cols = 40;
         this.rows = 40;
-        this.cellSize = 10;
+        this.cellSize = 20;
         this.speed = 25;
 
         // this.grid = [];
@@ -39,8 +39,8 @@ class Automata {
         let count = 0;
         for (let i = -1; i <= 1; i++) {
             for (let j = -1; j <= 1; j++) {
-                let neighborX = x + i;
-                let neighborY = y + j;
+                let neighborX = (x + i) % this.cols;
+                let neighborY = (y + j) % this.rows;
                 // Check if the neighbor cell is within the grid bounds
                 if (neighborX >= 0 && neighborX < this.cols && neighborY >= 0 && neighborY < this.rows) {
                     count += this.grid[neighborX][neighborY];
@@ -82,13 +82,13 @@ class Automata {
         for (let i = 0; i < this.cols; i++) {
             for (let j = 0; j < this.rows; j++) {
                 if (this.grid[i][j] === 1) { // if the cell is 1 fill the cell
-                    ctx.fillRect(i * this.cols, j * this.cols, this.cols, this.cols);
+                    // ctx.fillRect(i * this.cols, j * this.cols, this.cols, this.cols);
 
                  //   Draw a black circle at the center of the cell
-                    // ctx.beginPath();
-                    // ctx.arc(i * this.cellSize + this.cellSize / 2, j * this.cellSize + this.cellSize / 2, this.cellSize / 2, 0, Math.PI * 2);
-                    // ctx.fill();
-                    // ctx.closePath();
+                    ctx.beginPath();
+                    ctx.arc(i * this.cellSize + this.cellSize / 2, j * this.cellSize + this.cellSize / 2, this.cellSize / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.closePath();
                 }
             }
         }
