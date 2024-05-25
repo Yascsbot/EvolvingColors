@@ -79,7 +79,9 @@ class GameEngine {
     addEntity(entity) {
         this.entities.push(entity);
     };
-
+    clearAnimats() {
+        this.entities = [this.entities[0]]; 
+    }
     draw() {
         // Clear the whole canvas with transparent color (rgba(0, 0, 0, 0))
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
@@ -92,7 +94,7 @@ class GameEngine {
 
     update() {
         let entitiesCount = this.entities.length;
-
+    
         for (let i = 0; i < entitiesCount; i++) {
             let entity = this.entities[i];
 
